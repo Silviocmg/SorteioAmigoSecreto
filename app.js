@@ -1,4 +1,3 @@
-//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
 let listaDeAmigos = [];
 
 function adicionarAmigo() {
@@ -10,19 +9,32 @@ function adicionarAmigo() {
     listaDeAmigos.push(texto);
     atualizarLista();
 
-    amigo.value = ""; // Limpa o campo de entrada
+    amigo.value = "";
   } else {
     alert("Por favor, insira um nome.");
   }
 }
 
 function atualizarLista() {
-  const listaAmigos = document.getElementById("listaAmigos");
-  listaAmigos.innerHTML = ""; // Limpa a lista antes de adicionar os novos elementos
+  let listaAmigos = document.getElementById("listaAmigos");
+  listaAmigos.innerHTML = "";
 
   for (let i = 0; i < listaDeAmigos.length; i++) {
-    const novoItem = document.createElement("li");
+    let novoItem = document.createElement("li");
     novoItem.textContent = listaDeAmigos[i];
     listaAmigos.appendChild(novoItem);
   }
+}
+
+function sortearAmigo() {
+  let resultadoElement = document.getElementById("resultado");
+  if (listaDeAmigos.length === 0) {
+    alert("Não há amigos para sortear. Adicione pelo menos um amigo.");
+    return;
+  }
+
+  let indiceAleatorio = Math.floor(Math.random() * listaDeAmigos.length);
+  let amigoSorteado = listaDeAmigos[indiceAleatorio];
+
+  resultadoElement.innerHTML = `Amigo sorteado: ${amigoSorteado}`;
 }
